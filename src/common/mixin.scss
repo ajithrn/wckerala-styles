@@ -1,0 +1,59 @@
+/**
+* Button Generator 
+*/
+
+@mixin button($color, $size, $fontColor) {
+  background-color: $color;
+  color: $fontColor;
+  padding: 6px 15px;
+  border: none;
+  border-radius: 4px;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 5px -2px rgba(0, 0, 0, 0.2);
+
+
+  @if $size == sm {
+    font-size: 13px;
+    padding: 6px 12px;
+  } @else if $size == md {
+    font-size: 15px;
+    padding: 10px 20px;
+  } @else if $size == lg {
+    font-size: 17px;
+    padding: 14px 28px;
+  }
+  
+  &:hover {
+    background-color: darken($color, 10%);
+  }
+}
+
+/** 
+* Responsive code 
+*/
+// Define a mixin for media queries
+@mixin device-size($media) {
+  @if $media == phone {
+    @media (max-width: 419px) {
+      @content;
+    }
+  } @else if $media == mobile-landscape {
+    @media (min-width: 420px) {
+      @content;
+    }
+  } @else if $media == tablet-portrait {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $media == tablet-landscape {
+    @media (min-width: 900px) {
+      @content;
+    }
+  } @else if $media == desktop {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+}

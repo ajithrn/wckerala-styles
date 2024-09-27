@@ -1,0 +1,12 @@
+.site-footer {
+  background-color: $color-light;
+
+}
+.footer-menus {
+  row-gap: 40px;
+  .wp-block-group {
+    @media (max-width: 599px) {
+      flex-basis: 100%;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+/*
+  File: main.scss
+  Description: CSS styles for the WordPress Photo Festival 2024 official website.
+  Author: Ajith
+  Version: 1.0.0
+  Last Modified: 20/01/20204 
+
+  === Changelog ===
+  1.0.0 - 20/01/20204 : Initial commit
+  ...
+  ...
+*/
+@import "common/variable.scss";
+@import "common/mixin.scss";
+@import "components/global.scss";
+@import "components/blocks.scss";
+@import "layout/header.scss";
+@import "layout/footer.scss";
+@import "layout/ticket.scss";
+@import "layout/page.scss";

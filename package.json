@@ -1,0 +1,15 @@
+{
+  "name": "wordpress-photo-festival-2024",
+  "version": "1.0.0",
+  "description": "CSS and Sass files for the official website of WordPress Photo Festival 2024.",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass src/main.scss dist/style.css --style compressed",
+    "watch": "sass src/main.scss:dist/style.css --style compressed --watch"
+  },
+  "author": "Ajith",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.43.4"
+  }
+}

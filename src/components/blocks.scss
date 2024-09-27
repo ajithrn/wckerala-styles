@@ -1,0 +1,18 @@
+/**
+* Newsletter Block
+*/
+.newsletter-block {
+  #subscribe-blog {
+    @include device-size(tablet-portrait) {
+      max-width: 75%;
+    }
+    .wp-block-button__link {
+      width: auto;
+    }
+    #subscribe-submit {
+      @include device-size(phone) {
+        width: auto!important;
+      }
+    }
+  }
+}
