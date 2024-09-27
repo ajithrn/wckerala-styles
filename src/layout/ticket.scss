@@ -4,15 +4,16 @@
     padding: 30px 10px;
   }
   padding-bottom: 90px;
-  background-color: lighten($color-light, 9%);
+  background-color: lighten($color-light, 20%);
   border-radius: 3px;
   .tix_tickets_table {
     overflow-x: scroll;
     text-align: left;
     font-size: 15px;
     .tix-ticket-title {
+      font-size: 1.4em;
       color: $color-primary;
-      line-height: 3;
+      line-height: 2;
       @media (max-width: 599px) {
       line-height: 1.2;
       }
@@ -47,6 +48,22 @@
       @media (max-width: 599px) {
         width: 90%;
       }
+    }
+    .tix-column-quantity {
+      select {
+        height: 32px;
+        padding: 5px 10px;
+        border: 1px solid darken($color-light, 5%);
+        border-radius: 3px;
+        box-shadow: 0 0 5px -2px rgba(0, 0, 0, 0.2);
+        background: lighten($color-light, 15%);
+      }
+    }
+    .tix-ticket-excerpt {
+      font-weight: 400;
+    }
+    .tix-column-price, .tix-column-remaining {
+      font-weight: 600;
     }
   }
   .tix-attendee-form {
@@ -87,6 +104,11 @@
   }
   .tix-checkout-button {
     @include button ($color-primary, 'lg', $color-white);
+  }
+  h2 {
+    font-weight: bold;
+    color: $color-primary;
+    padding-left: 10px;
   }
 }
 
