@@ -1,41 +1,148 @@
 #tix {
   padding: 30px;
-  @media (max-width: 599px) {
+  @media (max-width: 768px) {
     padding: 30px 10px;
   }
   padding-bottom: 90px;
   background-color: lighten($color-light, 20%);
   border-radius: 3px;
+
   .tix_tickets_table {
-    overflow-x: scroll;
+    width: 100%;
+    display: table; // Default table layout for larger screens
+    overflow-x: auto; // Allow horizontal scroll on small screens
     text-align: left;
     font-size: 15px;
+
+    // For smaller screens, hide the table headers and use flexbox layout on rows
+    @media (max-width: 768px) {
+      display: block;
+
+      thead {
+        display: none; // Hide the thead in mobile view
+      }
+
+      tbody {
+        display: block; // Use block to let rows wrap
+        tr {
+          display: flex;
+          flex-direction: column;
+          border-bottom: 1px solid #ddd;
+          margin-bottom: 1.2rem;
+          padding-bottom: 1rem;
+        }
+
+        th, td {
+          display: flex; // Convert table cells into block structures
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 10px 0;
+          font-size: 14px;
+
+          &:before {
+            content: attr(data-label);
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #333;
+            display: inline-block;
+          }
+        }
+      }
+    }
+    
     .tix-ticket-title {
       font-size: 1.4em;
       color: $color-primary;
       line-height: 2;
-      @media (max-width: 599px) {
-      line-height: 1.2;
+
+      @media (max-width: 768px) {
+        line-height: 1.6;
+        font-size: 18px;
       }
     }
-    thead {
-      background-color: lighten($color-green, 35%);;
+
+    .tix-ticket-excerpt {
+      font-weight: 400;
+      @media (max-width: 768px) {
+        font-size: 14px;
+        white-space: normal;
+      }
     }
+
+    thead {
+      background-color: lighten($color-green, 35%);
+    }
+
     th {
       font-size: 18px;
       font-weight: 600;
       padding: 10px 20px;
-      @media (max-width: 599px) {
+
+      @media (max-width: 768px) {
         font-size: 14px;
         padding: 5px 10px;
       }
     }
+
     td {
       padding: 10px 20px;
-      @media (max-width: 599px) {
+
+      @media (max-width: 768px) {
         padding: 5px 10px;
       }
     }
+
+    .tix-column-quantity {
+      select {
+        width: 100%;
+        height: 32px;
+        padding: 5px 10px;
+        border: 1px solid darken($color-light, 5%);
+        border-radius: 3px;
+        box-shadow: 0 0 5px -2px rgba(0, 0, 0, 0.2);
+        background: lighten($color-light, 15%);
+      }
+    }
+    .tix-column-price,
+    .tix-column-remaining {
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px)  {
+      .tix-column-price {
+        display: inline;
+        &:before {
+          min-width: 80px;
+          content: "Price: ";
+          margin-right: 10px;
+          font-weight: 500;
+        }
+      }
+      .tix-column-remaining {
+        display: inline;
+        &:before {
+          min-width: 80px;
+          content: "Remaining: ";
+          margin-right: 10px;
+          font-weight: 500;
+        }
+      }
+      .tix-column-quantity {
+        display: inline;
+        &:before {
+          min-width: 80px;
+          content: "Quantity: ";
+          margin-right: 10px;
+          font-weight: 500;
+        }
+        select {
+          max-width: 70%;
+        }
+      }
+    }
+    
+    
     #tix-coupon-input {
       border: 1px solid darken($color-light, 5%);
       border-radius: 3px;
@@ -45,35 +152,23 @@
       box-shadow: 0 0 5px -2px rgba(0, 0, 0, 0.2);
       background: lighten($color-light, 15%);
       height: 32px;
-      @media (max-width: 599px) {
+
+      @media (max-width: 768px) {
         width: 90%;
       }
     }
-    .tix-column-quantity {
-      select {
-        height: 32px;
-        padding: 5px 10px;
-        border: 1px solid darken($color-light, 5%);
-        border-radius: 3px;
-        box-shadow: 0 0 5px -2px rgba(0, 0, 0, 0.2);
-        background: lighten($color-light, 15%);
-      }
-    }
-    .tix-ticket-excerpt {
-      font-weight: 400;
-    }
-    .tix-column-price, .tix-column-remaining {
-      font-weight: 600;
-    }
   }
+
   .tix-attendee-form {
     margin-bottom: 30px;
     border-bottom: 2px solid #eaeaea;
     padding-bottom: 30px;
+
     &:last-child {
       border-bottom: 0px;
       padding-bottom: 0px;
     }
+
     input,
     select {
       border: 1px solid darken($color-light, 5%);
@@ -84,27 +179,33 @@
       box-shadow: 0 0 5px -2px rgba(0, 0, 0, 0.2);
       background: lighten($color-light, 15%);
       height: 32px;
-      @media (max-width: 599px) {
-        width: 90%;
+
+      @media (max-width: 768px) {
+        width: 100%;
       }
     }
-    input[type="radio"], input[type="checkbox"] {
+
+    input[type="radio"],
+    input[type="checkbox"] {
       height: auto;
       width: auto;
       margin-right: 6px;
     }
+
     label {
-      
       font-size: 15px;
       font-weight: 500;
     }
   }
+
   input[type="submit"] {
-    @include button ($color-primary, 'md', $color-white);
+    @include button($color-primary, 'md', $color-white);
   }
+
   .tix-checkout-button {
-    @include button ($color-primary, 'lg', $color-white);
+    @include button($color-primary, 'lg', $color-white);
   }
+
   h2 {
     font-weight: bold;
     color: $color-primary;
